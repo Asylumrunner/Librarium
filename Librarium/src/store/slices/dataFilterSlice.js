@@ -15,10 +15,7 @@ const dataFilterSlice = createSlice({
     },
     reducers: {
         changeMediaType(state, action) {
-            let newState;
-            Object.assign(newState, selectedMediaTypes)
-            newState[action.payload] = !newState[action.payload]
-            state.selectedMediaTypes = newState;
+            state.selectedMediaTypes[action.payload] = !state.selectedMediaTypes[action.payload]
         }
     }
 });

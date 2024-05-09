@@ -1,8 +1,12 @@
 function GridCell({item, mediatype}) {
     return (<div>
-        {item.name}
-        <br/>
-        {mediatype}
+        <img src="https://picsum.photos/150" /> <br/>
+        <div>
+            {item.name}
+        </div>
+        <div>
+            {mediatype}
+        </div>
     </div>)
 }
 
