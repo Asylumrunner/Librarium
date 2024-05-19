@@ -2,10 +2,12 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { collectionApi } from './apis/collectionApi';
 import { dataFilterReducer, changeMediaType } from './slices/dataFilterSlice';
+import { currentItemReducer, setCurrentItem, removeCurrentItem } from './slices/currentItemSlice';
 
 export const store = configureStore({
     reducer: {
         dataFilter: dataFilterReducer,
+        currentItem: currentItemReducer,
         [collectionApi.reducerPath]: collectionApi.reducer
     },
     middleware: (getDefaultMiddleware) => {
@@ -16,5 +18,5 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { changeMediaType }
+export { changeMediaType, setCurrentItem, removeCurrentItem }
 export { useFetchCollectionQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation } from './apis/collectionApi'
