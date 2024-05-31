@@ -2,6 +2,7 @@ import './App.css'
 import DetailsView from './components/DetailsView'
 import GridView from './components/GridView'
 import Toolbar from './components/Toolbar'
+import SearchPage from './components/search/SearchPage'
 import { useSelector } from 'react-redux'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <div>
+        <SearchPage />
         <Toolbar />
         {selectedItem == null ? <GridView />: <DetailsView item={selectedItem}/>}
       </div>

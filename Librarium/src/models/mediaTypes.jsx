@@ -1,11 +1,11 @@
-const MediaTypes = [
-    "book",
-    "movie",
-    "video_game",
-    "board_game",
-    "rpg",
-    "anime",
-    "music"
-]
+const MediaTypes = {
+    "book": "Book",
+    "movie": "Movie",
+    "video_game": "Video Game",
+    "board_game": "Board Game",
+    "rpg": "Tabletop RPG",
+    "anime": "Anime",
+    "music": "Album"
+}
 
 export default MediaTypes;

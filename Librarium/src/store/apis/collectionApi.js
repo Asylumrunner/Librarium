@@ -12,7 +12,7 @@ const collectionApi = createApi({
         return {
             fetchCollection: builder.query({
                 providesTags: (result, error, includedMediaTypes) => {
-                    return MediaTypes.filter( type => {
+                    return Object.keys(MediaTypes).filter( type => {
                         includedMediaTypes.includes(type)
                     }).map(type => {
                         return {type:'Collection', id: type}

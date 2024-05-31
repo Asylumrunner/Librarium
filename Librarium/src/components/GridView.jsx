@@ -10,7 +10,7 @@ function GridView() {
     
     const excludedMediaTypes = Object.entries(selectedMediaTypes).filter(([k, v]) => !v).map(([k, v]) => k)
 
-    const { data, error, isFetching } = useFetchCollectionQuery(MediaTypes)
+    const { data, error, isFetching } = useFetchCollectionQuery(Object.keys(MediaTypes))
     
     if (isFetching) {
         return <div>Fetching collection</div>

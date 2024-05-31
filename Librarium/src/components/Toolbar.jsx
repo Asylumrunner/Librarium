@@ -13,7 +13,7 @@ function Toolbar() {
         dispatch(changeMediaType(media))
     }
 
-    const media_types = MediaTypes.map(mediaType => {
+    const media_types = Object.keys(MediaTypes).map(mediaType => {
         return (<div key={mediaType}>
             <input 
                 type="checkbox"
@@ -21,7 +21,7 @@ function Toolbar() {
                 value={mediaType}
                 checked={selectedMediaTypes[mediaType]}
                 onChange={() => {handleMediaToggle(mediaType)}}
-            />  {mediaType}
+            />  {MediaTypes[mediaType]}  
         </div>)
     })
     return (<div className="flex flex-row">{media_types}</div>)
