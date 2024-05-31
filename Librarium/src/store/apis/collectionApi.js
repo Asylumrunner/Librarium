@@ -11,46 +11,43 @@ const collectionApi = createApi({
     endpoints(builder) {
         return {
             fetchCollection: builder.query({
-                providesTags: (result, error, excludedMediaTypes) => {
+                providesTags: (result, error, includedMediaTypes) => {
                     return MediaTypes.filter( type => {
-                        !excludedMediaTypes.includes(type)
+                        includedMediaTypes.includes(type)
                     }).map(type => {
                         return {type:'Collection', id: type}
                     })
                 },
-                query: (excludedMediaTypes) => {
+                query: (includedMediaTypes) => {
                     var queryParamString = ""
-                    if (excludedMediaTypes.length > 0) {
-                        var formattedQueryParams = excludedMediaTypes.map( type => {
-                            return `exclude=${type}`
-                        })
-                        queryParamString = `?${formattedQueryParams.join("&")}`
-                    }
+                    var formattedQueryParams = includedMediaTypes.map( type => {
+                        return `media_type=${type}`
+                    })
+                    queryParamString = `?${formattedQueryParams.join("&")}`
+                    
                     return {
-                        url: `/everything${queryParamString}`,
+                        url: `/items${queryParamString}`,
                         method: 'GET'
                     }
                 }
             }),
-            fetchMedia: builder.query({
-                providesTags: (result, error, media_type) => {
-                    return [{type: 'Collection', id: media_type}]
-                },
-                query: (media_type) => {
+            searchForItem: builder.query({
+                query: ({title, media_type}) => {
                     return {
-                        url: `/${media_type}`,
+                        url: `/search/${title}?media_type=${media_type}`,
                         method: 'GET'
                     }
                 }
             }),
             putInCollection: builder.mutation({
-                invalidatesTags: (result, error, {media_type}) => {
-                    return [{type: 'Collection', id: media_type}]
+                invalidatesTags: (result, error, {data}) => {
+                    return [{type: 'Collection', id: data.media_type}]
                 },
-                query: ({media_type, key}) => {
+                query: ({data}) => {
                     return {
-                        url: `${media_type}/${key}`,
-                        method: 'PUT'
+                        url: `/items`,
+                        method: 'PUT',
+                        body: data
                     }
                 }
             }),
@@ -58,9 +55,9 @@ const collectionApi = createApi({
                 invalidatesTags: (result, error, {media_type}) => {
                     return [{type: 'Collection', id: media_type}]
                 },
-                query: ({media_type, key}) => {
+                query: ({key}) => {
                     return {
-                        url: `${media_type}/${key}`,
+                        url: `/items/${key}`,
                         method: 'DELETE' 
                     }
                 }
@@ -69,5 +66,5 @@ const collectionApi = createApi({
     }
 });
 
-export const { useFetchCollectionQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation } = collectionApi
+export const { useFetchCollectionQuery, useSearchForItemQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation } = collectionApi
 export { collectionApi }

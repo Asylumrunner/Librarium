@@ -5,9 +5,9 @@ function GridCell({item, mediatype}) {
     const dispatch = useDispatch()
 
     return (<div>
-        <img src="https://picsum.photos/125" /> <br/>
+        <img src={item.img_link} className="object-scale-down h-48 w-96"/> <br/>
         <div>
-            {item.name}
+            {item.title}
         </div>
         <div>
             {mediatype}
