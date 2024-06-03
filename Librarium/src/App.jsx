@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 function App() {
   const { selectedItem } = useSelector((state) => {
     return state.currentItem
-})
+  })
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { setCurrentItem } from "../store"
 
-function GridCell({item, mediatype}) {
+function GridCell({item, mediatype, inCollection}) {
     const dispatch = useDispatch()
 
     return (<div>
@@ -9,10 +9,7 @@ function GridCell({item, mediatype}) {
         <div>
             {item.title}
         </div>
-        <div>
-            {mediatype}
-        </div>
-        <button onClick={() => {dispatch(setCurrentItem(item))}}>Expand</button>
+        <button onClick={() => {dispatch(setCurrentItem({item, inCollection}))}}>Expand</button>
     </div>)
 }
 

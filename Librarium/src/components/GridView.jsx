@@ -20,7 +20,7 @@ function GridView() {
         var filteredData = data.data.filter(item => !excludedMediaTypes.includes(item.media_type))
         var gridCells = []
         filteredData.forEach( entry =>
-            gridCells.push(<GridCell key={entry.guid} item={entry} mediatype={entry.media_type} />)
+            gridCells.push(<GridCell item={entry} mediatype={entry.media_type} inCollection={true} />)
         )
         return <div className="grid grid-cols-5 gap-6">
             {gridCells}

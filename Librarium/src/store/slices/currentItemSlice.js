@@ -3,14 +3,18 @@ import { createSlice } from '@reduxjs/toolkit'
 const currentItemSlice = createSlice({
     name: "currentItem",
     initialState: {
-        selectedItem: null
+        selectedItem: null,
+        inCollection: false
     },
     reducers: {
         setCurrentItem(state, action) {
-            state.selectedItem = action.payload
+            var { item, inCollection } = action.payload
+            state.selectedItem = item
+            state.inCollection = inCollection
         },
         removeCurrentItem(state, action) {
             state.selectedItem = null
+            state.inCollection = false
         }
     }
 });
