@@ -11,13 +11,7 @@ const collectionApi = createApi({
     endpoints(builder) {
         return {
             fetchCollection: builder.query({
-                providesTags: (result, error, includedMediaTypes) => {
-                    return Object.keys(MediaTypes).filter( type => {
-                        includedMediaTypes.includes(type)
-                    }).map(type => {
-                        return {type:'Collection', id: type}
-                    })
-                },
+                providesTags: ['Collection'],
                 query: (includedMediaTypes) => {
                     var queryParamString = ""
                     var formattedQueryParams = includedMediaTypes.map( type => {
@@ -40,9 +34,7 @@ const collectionApi = createApi({
                 }
             }),
             putInCollection: builder.mutation({
-                invalidatesTags: (result, error, {data}) => {
-                    return [{type: 'Collection', id: data.media_type}]
-                },
+                invalidatesTags: ['Collection'],
                 query: ({data}) => {
                     return {
                         url: `/items`,
@@ -52,9 +44,7 @@ const collectionApi = createApi({
                 }
             }),
             removeFromCollection: builder.mutation({
-                invalidatesTags: (result, error, {media_type}) => {
-                    return [{type: 'Collection', id: media_type}]
-                },
+                invalidatesTags: ['Collection'],
                 query: ({key}) => {
                     return {
                         url: `/items/${key}`,
@@ -63,6 +53,7 @@ const collectionApi = createApi({
                 }
             }),
             editItemInCollection: builder.mutation({
+                invalidatesTags: ['Collection'],
                 query: ({guid, data}) => {
                     return {
                         url: `/items/${guid}`,

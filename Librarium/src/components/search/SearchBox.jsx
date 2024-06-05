@@ -27,9 +27,9 @@ function SearchBox({searchFunction}) {
     return (<div>
         <form id="searchbox" onSubmit={handleFormSubmit}>
             <input value={userInput} onChange={handleChange}/>
-            <Select defaultValue={options[0].value} options={options} onChange={handleMediaTypeChange} />
+            <Select className="text-black" defaultValue={options[0].value} options={options} onChange={handleMediaTypeChange} />
         </form>
-        <button form="searchbox" type="submit"></button>
+        <button form="searchbox" type="submit">Search!</button>
     </div>)
 }
 
