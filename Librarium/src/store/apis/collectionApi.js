@@ -61,10 +61,19 @@ const collectionApi = createApi({
                         method: 'DELETE' 
                     }
                 }
+            }),
+            editItemInCollection: builder.mutation({
+                query: ({guid, data}) => {
+                    return {
+                        url: `/items/${guid}`,
+                        method: 'PUT',
+                        body: data
+                    }
+                }
             })
         }
     }
 });
 
-export const { useFetchCollectionQuery, useSearchForItemQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation } = collectionApi
+export const { useFetchCollectionQuery, useSearchForItemQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation, useEditItemInCollectionMutation } = collectionApi
 export { collectionApi }

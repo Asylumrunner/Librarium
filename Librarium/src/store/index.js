@@ -19,4 +19,4 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 
 export { changeMediaType, setCurrentItem, removeCurrentItem }
-export { useFetchCollectionQuery, useSearchForItemQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation } from './apis/collectionApi'
+export { useFetchCollectionQuery, useSearchForItemQuery, usePutInCollectionMutation, useRemoveFromCollectionMutation, useEditItemInCollectionMutation } from './apis/collectionApi'

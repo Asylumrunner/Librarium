@@ -2,13 +2,11 @@ import { useSearchForItemQuery } from "../../store"
 import GridCell from "../GridCell"
 
 function SearchResults({searchObject}) {
-    console.log(searchObject)
     const { data, error, isFetching } = useSearchForItemQuery(searchObject)
 
     if (isFetching) {
         return (<div>Fetching response</div>)
     } else if (error) {
-        console.log(error)
         return (<div>Shit's fucked!</div>)
     } else {
         var gridCells = []
