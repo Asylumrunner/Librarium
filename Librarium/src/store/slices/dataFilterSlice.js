@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const dataFilterSlice = createSlice({
     name: "dataFilter",
     initialState: {
+        searchTerm: "",
+        sortMode: "",
         selectedMediaTypes: {
             "book": true,
             "movie": true,
@@ -16,9 +18,15 @@ const dataFilterSlice = createSlice({
     reducers: {
         changeMediaType(state, action) {
             state.selectedMediaTypes[action.payload] = !state.selectedMediaTypes[action.payload]
+        },
+        setSearchTerm(state, action) {
+            state.searchTerm = action.payload
+        },
+        setSortMode(state, action) {
+            state.sortMode = action.payload
         }
     }
 });
 
-export const { changeMediaType } = dataFilterSlice.actions;
+export const { changeMediaType, setSearchTerm, setSortMode } = dataFilterSlice.actions;
 export const dataFilterReducer = dataFilterSlice.reducer;
