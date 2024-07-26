@@ -12,10 +12,7 @@ function App() {
   return (
     <>
       <div className="flex flex-row w-screen">
-        <div className="basis-4/12 justify-start m-8">
-          <SearchPage />
-        </div>
-        <div className="basis-8/12 justify-center m-8">
+        <div className="justify-center m-8">
           <Toolbar />
           {selectedItem == null ? <GridView />: <DetailsView item={selectedItem}/>}
         </div>
