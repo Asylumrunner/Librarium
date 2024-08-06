@@ -52,7 +52,7 @@ function GridView() {
         filteredData.forEach( entry =>
             gridCells.push(<GridCell item={entry} mediatype={entry.media_type} inCollection={true} />)
         )
-        return <div className="grid grid-cols-5 gap-6">
+        return <div className="grid grid-cols-7 gap-3">
             {gridCells}
         </div>
     }

@@ -4,12 +4,8 @@ import { setCurrentItem } from "../store"
 function GridCell({item, mediatype, inCollection}) {
     const dispatch = useDispatch()
 
-    return (<div>
-        <img src={item.img_link} className="object-scale-down h-48 w-96"/> <br/>
-        <div>
-            {item.title}
-        </div>
-        <button onClick={() => {dispatch(setCurrentItem({item, inCollection}))}}>Expand</button>
+    return (<div className="bg-purple-100 w-124 h-170">
+        <img src={item.img_link} onClick={() => {dispatch(setCurrentItem({item, inCollection}))}} className="drop-shadow-2xl h-full w-full aspect-auto object-center object-cover"/>
     </div>)
 }
 
